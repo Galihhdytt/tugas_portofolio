@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengalaman Admin</title>
+    <link rel="stylesheet" href="/admin/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div><h1>Pengalaman</h1><p>Tambah banyak pengalaman kerja atau organisasi.</p></div>
+        <div style="display:flex; gap: 10px; align-items:center;"><a class="btn-link" href="/admin/dashboard.html">Kembali</a></div>
+      </div>
+      <div class="card">
+        <form id="experienceForm">
+          <input type="hidden" id="experienceId" />
+          <label>Posisi</label><input id="experiencePosisi" required />
+          <label>Perusahaan</label><input id="experiencePerusahaan" required />
+          <label>Durasi</label><input id="experienceDurasi" required />
+          <label>Deskripsi</label><textarea id="experienceDeskripsi"></textarea>
+          <button type="submit">Simpan Pengalaman</button>
+        </form>
+        <div class="message" id="experienceMessage"></div>
+        <div class="list" id="experienceList"></div>
+      </div>
+    </div>
+    <script src="/admin/js/dashboard.js?v=20260626"></script>
+  </body>
+</html>

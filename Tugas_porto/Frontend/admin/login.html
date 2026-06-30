@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin</title>
+    <style>
+      :root {
+        --primary: #7c3aed;
+        --secondary: #06b6d4;
+        --accent: #f472b6;
+        --bg: #060816;
+        --surface: rgba(15, 23, 42, 0.82);
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --border: rgba(255,255,255,0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:
+          radial-gradient(circle at top left, rgba(6,182,212,0.22), transparent 24%),
+          radial-gradient(circle at bottom right, rgba(124,58,237,0.24), transparent 26%),
+          var(--bg);
+        color: var(--text);
+        padding: 20px;
+      }
+
+      .card {
+        width: min(90%, 420px);
+        padding: 32px;
+        border-radius: 20px;
+        background: var(--surface);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+        border: 1px solid var(--border);
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.8rem;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.04);
+        color: var(--text);
+        outline: none;
+      }
+
+      input:focus {
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 3px rgba(6,182,212,0.16);
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Login Admin</h2>
+      <p>Masuk dengan akun admin untuk mengakses panel.</p>
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input id="username" name="username" placeholder="Masukkan username" required />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Masukkan password" required />
+        <button type="submit" id="loginBtn">Masuk</button>
+      </form>
+      <p id="loginMessage" style="margin-top: 12px; color: #f472b6;"></p>
+    </div>
+
+    <script>
+      const form = document.getElementById('loginForm');
+      const message = document.getElementById('loginMessage');
+      const button = document.getElementById('loginBtn');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        message.textContent = '';
+        button.disabled = true;
+        button.textContent = 'Memproses...';
+
+        try {
+          const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              username: document.getElementById('username').value,
+              password: document.getElementById('password').value
+            })
+          });
+
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(data.error || 'Login gagal');
+          }
+
+          if (data.token) {
+            localStorage.setItem('adminToken', data.token);
+          }
+          window.location.href = '/admin/dashboard.html';
+        } catch (error) {
+          message.textContent = error.message;
+        } finally {
+          button.disabled = false;
+          button.textContent = 'Masuk';
+        }
+      });
+    </script>
+  </body>
+</html>

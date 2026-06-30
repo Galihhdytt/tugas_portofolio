@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="/admin/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div>
+          <h1>Dashboard Admin</h1>
+          <p>Kelola konten portofolio dari halaman terpisah.</p>
+        </div>
+        <div style="display:flex; gap: 10px; align-items:center;">
+          <a class="btn-link" href="/">Lihat Portofolio</a>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Ringkasan</h2>
+        <p id="statsText">Memuat data...</p>
+        <p class="muted" id="userText">Admin</p>
+      </div>
+
+      <div class="grid" style="margin-top:20px;">
+        <a class="card" href="/admin/profile.html" style="text-decoration:none; color:inherit;">
+          <h2>Profil</h2>
+          <p>Kelola data diri, bio, dan foto profil.</p>
+        </a>
+        <a class="card" href="/admin/experience.html" style="text-decoration:none; color:inherit;">
+          <h2>Pengalaman</h2>
+          <p>Tambah banyak pengalaman kerja dan organisasi.</p>
+        </a>
+        <a class="card" href="/admin/project.html" style="text-decoration:none; color:inherit;">
+          <h2>Proyek</h2>
+          <p>Kelola project dengan gambar dari file lokal.</p>
+        </a>
+        <a class="card" href="/admin/skill.html" style="text-decoration:none; color:inherit;">
+          <h2>Skill</h2>
+          <p>Tambah dan atur daftar skill Anda.</p>
+        </a>
+      </div>
+    </div>
+
+    <script src="/admin/js/dashboard.js?v=20260626"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Admin</title>
+    <link rel="stylesheet" href="/admin/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div><h1>Profil</h1><p>Atur biodata dan foto profil.</p></div>
+        <div style="display:flex; gap: 10px; align-items:center;"><a class="btn-link" href="/admin/dashboard.html">Kembali</a></div>
+      </div>
+      <div class="card">
+        <form id="profileForm" enctype="multipart/form-data">
+          <input type="hidden" id="profileId" />
+          <label>Nama Lengkap</label><input id="nama_lengkap" name="nama_lengkap" />
+          <label>Nama Panggilan</label><input id="nama_panggilan" name="nama_panggilan" />
+          <label>Tempat Lahir</label><input id="tempat_lahir" name="tempat_lahir" />
+          <label>Tanggal Lahir</label><input id="tanggal_lahir" name="tanggal_lahir" />
+          <label>Email</label><input id="email" name="email" />
+          <label>Telepon</label><input id="telepon" name="telepon" />
+          <label>Universitas</label><input id="universitas" name="universitas" />
+          <label>Fakultas</label><input id="fakultas" name="fakultas" />
+          <label>Prodi</label><input id="prodi" name="prodi" />
+          <label>Semester</label><input id="semester" name="semester" />
+          <label>Alamat</label><textarea id="alamat" name="alamat"></textarea>
+          <label>Foto Profil</label><input type="file" id="foto" name="foto" accept="image/*" />
+          <label>Foto URL (opsional)</label><input id="foto_url" name="foto_url" />
+          <img id="profilePhotoPreview" class="preview-img" alt="Preview foto" style="display:none;" />
+          <button type="submit">Simpan Profil</button>
+        </form>
+        <div class="message" id="profileMessage"></div>
+      </div>
+    </div>
+    <script src="/admin/js/dashboard.js?v=20260626"></script>
+  </body>
+</html>

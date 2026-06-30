@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyek Admin</title>
+    <link rel="stylesheet" href="/admin/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div><h1>Proyek</h1><p>Tambah banyak proyek dengan gambar dari file lokal.</p></div>
+        <div style="display:flex; gap: 10px; align-items:center;"><a class="btn-link" href="/admin/dashboard.html">Kembali</a></div>
+      </div>
+      <div class="card">
+        <form id="projectForm" enctype="multipart/form-data">
+          <input type="hidden" id="projectId" />
+          <label>Judul</label><input id="projectJudul" name="judul" required />
+          <label>Deskripsi</label><textarea id="projectDeskripsi" name="deskripsi" required></textarea>
+          <label>Gambar Proyek</label><input type="file" id="projectGambar" name="gambar" accept="image/*" />
+          <label>Link Project</label><input id="projectLink" name="link_project" />
+          <button type="submit">Simpan Proyek</button>
+        </form>
+        <div class="message" id="projectMessage"></div>
+        <div class="list" id="projectList"></div>
+      </div>
+    </div>
+    <script src="/admin/js/dashboard.js?v=20260626"></script>
+  </body>
+</html>
